@@ -1,0 +1,270 @@
+.events_list_container {
+    display: grid;
+    gap: 24px;
+    margin: auto;
+}
+
+.events_btn_group {
+    display: grid;
+    margin-top: 40px;
+    gap: 24px;
+    margin-left: auto;
+    grid-template-columns: 56px 56px 56px;
+}
+
+.card {
+    background: white;
+    display: grid;
+    position: relative;
+    width: 272px;
+    border-radius: 12px;
+    box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
+}
+
+.card_action {
+    padding: 8px 16px 16px 16px;
+    display: flex;
+    background: white;
+    display: none;
+    position: absolute;
+    bottom: 0;
+}
+
+.widgets {
+    display: flex;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    gap: 12px;
+}
+
+.img_container {
+    width: 100%;
+    position: relative;
+}
+
+.time_date_loc_capture {
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--accentColor);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.card_span {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.card_title {
+    padding: 16px 16px 8px 16px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0px;
+    background: white;
+
+}
+
+.card_description {
+    padding: 8px 16px 16px 16px;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    background: white;
+
+}
+
+/*widgets*/
+
+.widget_span {
+    padding: 6px 12px;
+    background: white;
+    z-index: 100;
+    border-radius: 8px;
+}
+
+
+.high {
+    color: var(--errorColor);
+}
+
+.medium {
+    color: var(--yellow);
+}
+
+.low {
+    color: var(--green);
+}
+
+.category {
+    color: var(--accentColor);
+}
+
+.widget_wrapper {
+    display: flex;
+    gap: 8px;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+}
+
+.headline_events_h2 {
+    display: none;
+}
+
+.action_container {
+    width: 100%;
+    top: 296px;
+    overflow: hidden;
+}
+
+/*action btn*/
+
+.action_btn_link {
+    width: 114px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accentColor);
+    border-radius: 8px;
+    margin-left: auto;
+    text-decoration: none;
+    color: white;
+}
+
+.card:hover .action_container {
+    transform: translateY(-100%);
+    width: auto;
+    display: grid;
+}
+
+.card:hover .card_action {
+    display: block;
+    width: 100%;
+}
+
+.filter_wrapper,
+.sort_wrapper {
+    position: relative;
+    width: 56px;
+}
+
+.button_wrapper {
+    position: relative;
+    width: 56px;
+}
+
+.error_input input, .error_input select{
+    border: 1px solid var(--errorColor)
+}
+
+.error_input svg {
+    stroke: var(--errorColor);
+}
+.error_input span {
+        color: var(--errorColor);
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 16px;
+        text-align: right;
+}
+
+@media screen and (min-width: 768px) {
+    .events_btn_group {
+        margin-bottom: 40px;
+        margin-top: 0;
+        width: 100%;
+        gap: 40px 24px;
+        grid-template-columns: 1fr auto 193px;
+        grid-template-areas:
+            'cat sort add'
+            'h h h';
+    }
+
+    .events_btn_group_f {
+        grid-template-columns: 1fr 1fr 193px;
+
+    }
+
+    .btn_e_wrapper_f {
+        margin-left: auto;
+        width: 143px;
+        height: 56px;
+    }
+
+    .btn_e_wrapper_f_open {
+        margin-left: auto;
+        width: 158px;
+        height: 56px;
+    }
+
+    .btn_e_wrapper_s {
+        width: 129px;
+        height: 56px;
+    }
+
+    .btn_e_wrapper_s_open {
+        width: 170px;
+        height: 56px;
+    }
+
+    .filter_wrapper {
+        width: 148px;
+    }
+
+    .sort_wrapper {
+        width: 129px;
+    }
+
+    .headline_events_h2 {
+        display: inline-block;
+        padding: 0;
+        grid-area: h;
+    }
+
+    .events_list_container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .card {
+        width: auto;
+    }
+
+    .img_container {
+        height: 336px;
+        width: auto;
+    }
+
+    .img_container img {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .events_list_container {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 40px 24px;
+    }
+
+    .events_btn_group {
+        align-items: center;
+        grid-template-columns: 1fr auto auto 193px;
+        grid-template-areas: 'h cat cort add';
+        width: 100%;
+    }
+
+    .headline_events_h2 {
+        margin-bottom: 0;
+        margin-right: auto;
+    }
+}

@@ -1,0 +1,11 @@
+.edit_heading {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36px;
+}
+
+.events_btns{
+    display: flex;
+    gap: 24px;
+    justify-content: flex-end;
+}

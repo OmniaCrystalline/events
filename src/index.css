@@ -1,0 +1,130 @@
+@import-normalize;
+
+:root {
+  --errorColor: #FF2B77;
+  --accentColor: #7B61FF;
+  --paleAccent: #ACA7C3;
+  --primaryTextColor: #49454F;
+  --secondaryTextColor: #888888;
+  --yellow: #E2A300;
+  --green: #6BD475;
+  --fontAccent: 'Alata', sans-serif;
+  --fontPrimary: 'Poppins', sans-serif;
+  --text: #3F3F3F;
+  --shadow: 2px 4px 9px 0px #A68DAE47;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: var(--fontPrimary);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  letter-spacing: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li,
+p {
+  margin: 0;
+  color: var(--text);
+}
+
+body {
+  font-family: var(--fontPrimary);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+h2 {
+  font-family: var(--fontPrimary);
+  font-size: 32px;
+  font-weight: 600;
+}
+
+h3 {
+  font-family: var(--fontPrimary);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 36px;
+}
+
+input::placeholder {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+
+
+/*
+poppins 
+mb 400/16 lh 24 ; 500/16 lh 24 ; 400/14 lh 20
+md 600/32 lh 48 ; 500/16 lh 24 ; 400/14 lh 20
+lg 600/32 lh 48 ; 500/16 lh 24 ; 400/14 lh 20
+
+alata
+mb weight/size/lineheight 400/24/33
+*/
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  gap: 24px;
+  width: 320px;
+  padding: 24px;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+    padding: 40px;
+    gap: 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 1280px;
+    padding: 60px 80px;
+  }
+}
+
+.layout_bg {
+  background-image: url('../public/wave.png');
+  width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+}
+
+
+.capture {
+  font-family: var(--fontPrimary);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}

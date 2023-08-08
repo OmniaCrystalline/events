@@ -1,0 +1,134 @@
+.s {
+    height: 56px;
+    background: white;
+    color: var(--text);
+    stroke: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    justify-items: center;
+    border: none;
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+    transition: all 3ms ease-out;
+    font-size: 16px;
+    font-weight: 500;
+    min-width: 56px;
+    position: absolute;
+    z-index: 50;
+}
+
+.s_close {
+    width: 56px;
+}
+
+.s_open {
+    width: 170px;
+    border-radius: 8px 8px 0 0;
+    border-bottom: 1px solid #ACA7C3;
+    gap: 0;
+    justify-content: space-evenly;
+    transform: translateX(-114px);
+    z-index: 60;
+}
+
+.f_open {
+    min-width: 158px;
+    border-radius: 8px 8px 0 0;
+    border-bottom: 1px solid #ACA7C3;
+    gap: 0;
+    justify-content: space-evenly;
+    z-index: 70;
+}
+
+.f_open .f_svg {
+    margin: 0;
+}
+
+.f_svg {
+    margin: auto;
+}
+
+.s:hover,
+.f:hover,
+.f:focus,
+.s:focus {
+    color: var(--accentColor);
+    stroke: var(--accentColor);
+}
+
+.s_title {
+    display: none;
+}
+
+.s_title_wrapper {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.s_list {
+    position: absolute;
+    z-index: 105;
+    width: 100%;
+    top: 56px;
+    background: white;
+    display: grid;
+    color: var(--paleAccent);
+    border-radius: 0 0 8px 8px;
+    box-shadow: var(--shadow);
+    stroke: var(--paleAccent);
+}
+
+
+.s_list_span {
+    border-bottom: 1px solid #ACA7C3;
+    padding: 4px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.s_list_span:last-child {
+    border-radius: 8px;
+}
+
+.s_title_visible {
+    display: flex;
+}
+
+.s_active_item {
+    color: var(--accentColor);
+}
+
+@media screen and (min-width: 768px) {
+    .s_close {
+        width: 129px;
+    }
+
+    .s_open{
+        transform: none;
+    }
+
+    .f_svg {
+        margin: 0;
+    }
+
+    .s_title {
+        display: flex;
+    }
+
+    .f_close {
+        min-width: 148px;
+        gap: 0;
+        justify-content: space-evenly;
+    }
+}
+
+.arrow_sort_down{
+    transform: rotate(180deg);
+}
+
+.sort_active_svg{
+    stroke: var(--accentColor);
+}

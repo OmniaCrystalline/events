@@ -1,0 +1,56 @@
+.header {
+    display: grid;
+    grid-template-areas:
+        "logo select"
+        "search search";
+    gap: 24px;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: visible;
+}
+
+.header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -100vw;
+    right: -100vw;
+    height: 1px;
+    background-color: var(--accentColor);
+}
+
+@media screen and (min-width: 768px) {
+    .header {
+        grid-template-areas:
+            "logo search select";
+        grid-template-columns: 1fr auto auto;
+        padding: 26px 40px 18px 40px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .header {
+        grid-template-areas:
+            "logo search select";
+        grid-template-columns: 1fr auto auto;
+        padding: 22px 80px;
+    }
+}
+
+.logo {
+    color: var(--accentColor);
+    font-family: var(--fontAccent);
+    text-decoration: none;
+    font-size: 24px;
+    grid-area: logo;
+    width: fit-content;
+}
+
+@media screen and (min-width: 768px) {
+    .logo {
+        margin-right: auto;
+    }
+
+
+}

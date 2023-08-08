@@ -1,0 +1,124 @@
+.cur_card {
+    width: 272px;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 2px 4px 9px 0px #A68DAE47;
+}
+
+.cur_title {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36px;
+}
+
+.cur_img_container {
+    width: 100%;
+    height: 168px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.cur_img {
+    width: 100%;
+    height: auto;
+}
+
+.cur_content {
+    padding: 24px 16px 40px 16px;
+}
+
+.cur_supporting_text {
+    color: var(--primaryTextColor);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    margin-bottom: 24px;
+}
+
+.cur_widgets_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.cur_widget_shadow {
+    box-shadow: 4px 5px 9px 0px #A68DAE47;
+}
+
+.cur_btns_container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cur_btn {
+    width: 108px;
+    height: 32px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cur_edit_btn {
+    color: var(--accentColor);
+    text-decoration: none;
+    border: 1px solid var(--accentColor)
+}
+
+.cur_del_btn {
+    color: white;
+    background: var(--accentColor);
+    border: none;
+}
+
+@media screen and (min-width: 768px) {
+    .cur_title {
+        font-size: 32px;
+        line-height: 48px;
+    }
+
+    .cur_card {
+        width: 688px;
+    }
+
+    .cur_img_container {
+        height: 272px
+    }
+
+    .cur_btn {
+        width: fit-content;
+        padding: 0 16px;
+    }
+
+    .cur_btns_container {
+        justify-content: end;
+        gap: 16px;
+    }
+
+    .cur_content {
+        padding: 24px 24px 40px 24px;
+    }
+
+    .cur_title {
+        margin-bottom: 24px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .cur_content_container {
+        width: fit-content;
+        margin: auto;
+    }
+
+    .cur_title {
+        margin-bottom: 14px;
+    }
+
+}

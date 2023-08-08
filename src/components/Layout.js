@@ -10,7 +10,7 @@ const Layout = () => {
     <>
       <Header />
       <SelectLang />
-      <div>
+      <div className="layout_bg">
         <Outlet />
       </div>
     </>

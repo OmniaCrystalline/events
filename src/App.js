@@ -3,15 +3,19 @@
 import {
   Route,
   Routes,
-  //Navigate
 } from "react-router-dom";
 import Layout from "../src/components/Layout";
 import CreatePage from "./pages/Create";
 import EventsPage from "./pages/EventsPage";
 import CurrentPage from "./pages/Current";
 import EditPage from "./pages/EditPage";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    document.title = "Events Planner";
+  }, []);
+  
   return (
     <Routes>
       <Route path='/' element={<Layout />}>

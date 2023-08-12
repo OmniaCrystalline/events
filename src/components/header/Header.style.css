@@ -7,7 +7,7 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
-    overflow: visible;
+    overflow: hidden;
 }
 
 .header::after {

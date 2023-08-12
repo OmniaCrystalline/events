@@ -1,6 +1,6 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import "./CreateEvent.style.css";
 import "../button/Button.style.css";
 import { useForm } from "react-hook-form";
@@ -10,8 +10,11 @@ import BackLink from "../back-link/BackLink";
 import { useNavigate } from "react-router-dom";
 import uniqid from "uniqid";
 import { useTranslation } from "react-i18next";
+import InputDateImitator from "./InputDateImitator";
 
 const CreateEvent = () => {
+  const [date, setdate] = useState('');
+  const [dateOpen, setdateOpen] = useState(false)
   const { t } = useTranslation();
   const navigate = useNavigate();
   const {
@@ -25,6 +28,7 @@ const CreateEvent = () => {
 
   const onSubmit = (data) => {
     data.id = uniqid();
+    data.date = date;
     disp(addEvent(data));
     navigate(`/${data.id}`);
   };
@@ -75,7 +79,12 @@ const CreateEvent = () => {
         </label>
         <label className={errors?.date ? "lab_date input_error" : "lab_date"}>
           {t("label_date")}
-          <input type='date' {...register("date", { required: true })} />
+          <InputDateImitator
+            setdateOpen={setdateOpen}
+            dateOpen={dateOpen}
+            date={date}
+            setdate={setdate}
+          />
           <span>{errors?.date?.message}</span>
         </label>
         <label
@@ -115,7 +124,6 @@ const CreateEvent = () => {
           </select>
         </label>
         <span>{errors?.category?.message}</span>
-
         <label className='lab_pic'>
           {t("lab_add_pic")}
           <input
@@ -130,7 +138,7 @@ const CreateEvent = () => {
           className={
             errors?.priority ? "lab_priority error_input" : "lab_priority "
           }>
-          {t("lab_priority")}
+          <span>{t("lab_priority")}</span>
           <select {...register("priority", { required: true })}>
             <option value='High' className='s_list_span'>
               {t("high")}{" "}
@@ -140,7 +148,6 @@ const CreateEvent = () => {
           </select>
           <span>{errors?.priority?.message}</span>
         </label>
-
         <button className='btn lab_btn' title='Add event'>
           {t("create_btn_add_event")}
         </button>

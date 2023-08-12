@@ -1,8 +1,94 @@
-.cal_day{
+.c_container {
+    background: white;
+    display: grid;
+    box-shadow: 0px 0px 14px 0px #00000012;
+    position: absolute;
+    width: 100%;
+    top: 80px;
+    border-radius: 8px;
+    padding: 20px;
+    gap: 16px;
+}
+
+.c_week {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cal_day {
     background: lightblue;
 }
 
-.cal_days{
+.cal_days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.weekend {
+    color: var(--errorColor);
+}
+
+
+.day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: center;
+    height: 32px;
+    color: var(--paleAccent);
+}
+
+.cur_day {
+    color: var(--accentColor);
+}
+
+.pickedDay {
+    background: var(--accentColor);
+    color: white;
+}
+
+.c_heading {
+    display: flex;
+    justify-content: space-between;
+    stroke: var(--text);
+}
+
+.right_shevron {
+    transform: rotate(180deg);
+}
+
+.c_btn {
+    background: transparent;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    border-radius: 4px;
+}
+
+.c_btn_close{
+    border: 1px solid var(--accentColor);
+    color: var(--accentColor);
+    width: 75px;
+}
+
+.c_btn_create{
+    background: var(--accentColor);
+    color: white; 
+    width: 110px;
+}
+
+.c_btn_container {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
 }

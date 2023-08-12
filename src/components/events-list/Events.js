@@ -21,14 +21,13 @@ const Events = () => {
   const { t } = useTranslation();
   const [sortopen, setsortopen] = useState(false);
   const [filetropen, setfilteropen] = useState(false);
-
   const query = useSelector(search);
   const currpage = useSelector(currentPage);
   const eventsList = useSelector(events);
+  console.log("eventsList[0]", eventsList[0]);
   const filter = useSelector(currentCategory);
-   const sortType = useSelector(sort);
-   const sortDir = useSelector(sortDirection);
- 
+  const sortType = useSelector(sort);
+  const sortDir = useSelector(sortDirection);
   const data = filterList(eventsList, filter);
   const sorted = sortedList(data, sortType, sortDir);
   const filteredByQuery = sorted.filter(
@@ -40,18 +39,19 @@ const Events = () => {
   const beg = (currpage - 1) * quantityItemsOnPage;
   const end = beg + quantityItemsOnPage;
   const paginated = filteredByQuery.slice(beg, end);
-  console.log("fileopen", filetropen);
 
   return (
     <div className='container'>
       <div className='events_btn_group'>
         <h2 className='headline_events_h2'>{t("My_events")}</h2>
         <div
-          className={filetropen ? 'btn_e_wrapper_f_open' : 'btn_e_wrapper_f'}
+          className={filetropen ? "btn_e_wrapper_f_open" : "btn_e_wrapper_f"}
           onClick={() => setfilteropen(!filetropen)}>
           <F />
         </div>
-        <div className={sortopen ?'btn_e_wrapper_s_open' : 'btn_e_wrapper_s'} onClick={() => setsortopen(!sortopen)}>
+        <div
+          className={sortopen ? "btn_e_wrapper_s_open" : "btn_e_wrapper_s"}
+          onClick={() => setsortopen(!sortopen)}>
           <S />
         </div>
         <ButtonAdd />

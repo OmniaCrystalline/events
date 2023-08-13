@@ -10,6 +10,7 @@ import BackLink from "../back-link/BackLink";
 import { deleteEvent, setCurrentEvent } from "../../redux/slice";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { dateForCard } from "./functions";
 
 const Current = () => {
   const { t } = useTranslation();
@@ -20,8 +21,6 @@ const Current = () => {
   const currentEvent = eventList.find((e) => e.id === id);
   const { title, category, priority, date, time, description, location } =
     currentEvent;
-  const day = date.slice(-2);
-  const month = date.slice(5, 7);
   return (
     <>
       <BackLink />
@@ -44,7 +43,7 @@ const Current = () => {
                 {location}
               </span>
               <span className='card1_widget card1_cat_widget cur_widget_shadow'>
-                {day}.{month} {t("at")} {time}
+                {dateForCard(date)} {t("at")} {time}
               </span>
             </div>
             <div className='cur_btns_container'>

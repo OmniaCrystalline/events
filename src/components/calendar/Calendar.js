@@ -1,23 +1,93 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import "./Calendar.style.css";
-
-const Calendar = () => {
-  const currDate = new Date();
+import Chevron from "../pagination/Chevron";
+import { buttonNextMonth, buttonPrevMounth, monthFormat } from "./functions";
+const Calendar = ({ setdate, dateOpen, setdateOpen }) => {
+  const today = new Date();
   const week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const month = currDate.getMonth();
-  const day = currDate.getDay();
-  const year = currDate.getFullYear();
-  const days = numberOfDaysInMonth(year, month, day);
+  const todayMonth = today.getMonth();
+  const todayYear = today.getFullYear();
+  const todayDate = today.getDate();
+  const [pickedDay, setpickedDay] = useState(todayDate);
+  const [pickedMonth, setpickedMonth] = useState(todayMonth);
+  const [pickedYear, setpickedYear] = useState(todayYear);
+  const days = daysInMonth(pickedYear, pickedMonth);
+  const firstDayOfWeek = new Date(
+    `${pickedYear}-${pickedMonth + 1}-01`
+  ).getDay();
 
   return (
-    <div className='cal_cont'>
-      <div className='cal_month_year'></div>
-      {week.map((e) => (
-        <span key={e}>{e}</span>
-      ))}
-      <SpanGenerator days={days} day={day} />
+    <div className='c_container'>
+      <div className='c_heading'>
+        <button
+          type='button'
+          className='c_btn'
+          onClick={() =>
+            buttonPrevMounth(
+              pickedMonth,
+              pickedYear,
+              setpickedMonth,
+              setpickedYear
+            )
+          }>
+          <Chevron />
+        </button>
+        {monthFormat(pickedMonth)} {pickedYear}
+        <button
+          type='button'
+          className='c_btn right_shevron'
+          onClick={() =>
+            buttonNextMonth(
+              pickedMonth,
+              pickedYear,
+              setpickedMonth,
+              setpickedYear
+            )
+          }>
+          <Chevron />
+        </button>
+      </div>
+      <div className='c_week'>
+        {week.map((e) => (
+          <span
+            key={e}
+            className={e === "Sun" || e === "Sat" ? "day weekend" : "day"}>
+            {e}
+          </span>
+        ))}
+      </div>
+      <div className='cal_days'>
+        <SpanGeneratorEmpty day={firstDayOfWeek} />
+        <SpanGenerator
+          days={days}
+          todayDate={todayDate}
+          setpickedDay={setpickedDay}
+          pickedDay={pickedDay}
+        />
+      </div>
+      <div className='c_btn_container'>
+        <button
+          type='button'
+          className='c_btn_close c_btn'
+          onClick={() => setdateOpen(!dateOpen)}>
+          Cancel
+        </button>
+        <button
+          type='button'
+          className='c_btn_create c_btn'
+          onClick={() => {
+            setdate(
+              `${pickedYear}-${
+                pickedMonth.length === 2 ? pickedMonth : "0" + pickedMonth
+              }-${pickedDay > 9 ? pickedDay : "0" + pickedDay}`
+            );
+            setdateOpen(!dateOpen);
+          }}>
+          Choose date
+        </button>
+      </div>
     </div>
   );
 };
@@ -52,25 +122,48 @@ function daysInMonth(year, month) {
   }
 }
 
-function numberOfDaysInMonth(year, month, day) {
-  const daysInCurrentMonth = daysInMonth(year, month);
-  const daysLeftInMonth = daysInCurrentMonth - day + 1;
-  return daysLeftInMonth;
-}
-
-const SpanGenerator = ({ days, day }) => {
-  const fulltable = Math.ceil(days / 7) * 7;
+const SpanGenerator = ({ days, todayDate, setpickedDay, pickedDay, today }) => {
   const generateSpans = (count) => {
     const spans = [];
     for (let i = 0; i < count; i++) {
       spans.push(
-        <span className='cal_day' key={i}>
-          {day}
-        </span>
+        <SpanDay
+          key={i}
+          pickedDay={pickedDay}
+          day={i + 1}
+          setpickedDay={setpickedDay}
+          todayDate={todayDate}
+        />
       );
     }
     return spans;
   };
 
-  return <div className='cal_days'>{generateSpans(fulltable)}</div>;
+  return <>{generateSpans(days)}</>;
+};
+
+const SpanGeneratorEmpty = ({ day }) => {
+  const generateSpans = (count) => {
+    const spans = [];
+    for (let i = 0; i < day; i++) {
+      spans.push(<span key={i}></span>);
+    }
+    return spans;
+  };
+
+  return <>{generateSpans(day)}</>;
+};
+
+const SpanDay = ({ day, pickedDay, setpickedDay, todayDate }) => {
+  return (
+    <span
+      onClick={(e) => setpickedDay(e.target.textContent)}
+      className={
+        (day.toString() === pickedDay ? "day pickedDay" : "day") +
+        " " +
+        (day === todayDate ? "cur_day" : "")
+      }>
+      {day}
+    </span>
+  );
 };

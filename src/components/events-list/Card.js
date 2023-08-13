@@ -3,6 +3,7 @@
 import { Link } from "react-router-dom";
 import "./Card.style.css";
 import { useTranslation } from "react-i18next";
+import { dateForCard } from "../currentEvent/functions";
 
 import React from "react";
 
@@ -10,9 +11,6 @@ const Card = ({ event }) => {
   const { t } = useTranslation();
   const { title, description, date, time, category, location, priority, id } =
     event;
-
-  const day = date.slice(-2);
-  const month = date.slice(5, 7);
   return (
     <div className='card1'>
       <div className='card1_widgets'>
@@ -32,7 +30,7 @@ const Card = ({ event }) => {
       <div className='card1_action_container'>
         <div className='card1_data'>
           <span>
-            {day}.{month} {t("at")} {time}
+            {dateForCard(date)} {t("at")} {time}
           </span>
           <span>{location}</span>
         </div>

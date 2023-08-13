@@ -6,7 +6,6 @@ import ShevronCalendar from "../calendar/ShevronCalendar";
 import { dateForInput } from "./functions";
 
 const InputDateImitator = ({ setdateOpen, dateOpen, date, setdate }) => {
-  console.log('date', date)
     return (
       <>
         <div

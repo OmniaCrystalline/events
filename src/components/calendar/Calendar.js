@@ -14,7 +14,6 @@ const Calendar = ({ setdate, dateOpen, setdateOpen }) => {
   const [pickedMonth, setpickedMonth] = useState(todayMonth);
   const [pickedYear, setpickedYear] = useState(todayYear);
   const days = daysInMonth(pickedYear, pickedMonth);
-  console.log("pic", pickedDay, pickedMonth, pickedYear);
   const firstDayOfWeek = new Date(
     `${pickedYear}-${pickedMonth + 1}-01`
   ).getDay();

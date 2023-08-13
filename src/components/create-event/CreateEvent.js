@@ -6,11 +6,12 @@ import "../button/Button.style.css";
 import { useForm } from "react-hook-form";
 import { addEvent } from "../../redux/slice";
 import { useDispatch } from "react-redux";
-import BackLink from "../back-link/BackLink";
 import { useNavigate } from "react-router-dom";
-import uniqid from "uniqid";
 import { useTranslation } from "react-i18next";
 import InputDateImitator from "./InputDateImitator";
+import BackLink from "../back-link/BackLink";
+import uniqid from "uniqid";
+//import Time from "../time/Time";
 
 const CreateEvent = () => {
   const [date, setdate] = useState('');
@@ -86,7 +87,7 @@ const CreateEvent = () => {
             setdate={setdate}
           />
           <span>{errors?.date?.message}</span>
-        </label>
+          </label>
         <label
           className={errors?.time ? "lab_time input_error" : "input_error"}>
           {t("label_time")}

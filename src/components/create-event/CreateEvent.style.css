@@ -9,6 +9,12 @@
     grid-template-areas: 'title' 'description' 'date' 'time' 'location' 'category' 'picture' 'priority' 'btn';
 }
 
+.form_event label {
+    display: grid;
+    color: var(--accentColor);
+    gap: 8px;
+}
+
 .create_container {
     display: grid;
     gap: 24px;
@@ -80,16 +86,6 @@
 
 }
 
-.form_event label {
-    display: grid;
-    color: var(--accentColor);
-    gap: 8px;
-}
-
-/*.form_event .date_input_imitator {
-    color: var(--paleAccent);
-}*/
-
 .form_event input,
 .form_event select,
 .date_input_imitator {
@@ -106,8 +102,6 @@
 .form_event select {
     height: 56px;
 }
-
-
 
 .date_input_imitator {
     display: flex;

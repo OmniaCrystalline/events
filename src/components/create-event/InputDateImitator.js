@@ -6,10 +6,12 @@ import ShevronCalendar from "../calendar/ShevronCalendar";
 import { dateForInput } from "./functions";
 
 const InputDateImitator = ({ setdateOpen, dateOpen, date, setdate }) => {
-    return (
+  const date1 = document.querySelector("date_input_imitator");  
+  date1?.focus()
+  return (
       <>
         <div
-          className='date_input_imitator'
+          className='date_input_imitator input'
           onClick={() => setdateOpen(!dateOpen)}>
           {date !== "" && dateForInput(date)}
           <ShevronCalendar dateOpen={dateOpen} />

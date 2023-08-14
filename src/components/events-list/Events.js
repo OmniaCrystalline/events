@@ -24,8 +24,7 @@ const Events = () => {
   const query = useSelector(search);
   const currpage = useSelector(currentPage);
   const eventsList = useSelector(events);
-  console.log("eventsList[0]", eventsList[0]);
-  const filter = useSelector(currentCategory);
+  const filter = useSelector(currentCategory || 'All');
   const sortType = useSelector(sort);
   const sortDir = useSelector(sortDirection);
   const data = filterList(eventsList, filter);
@@ -75,10 +74,10 @@ const filterList = (arr, filter) => {
 
 const sortedList = (arr, type, dir) => {
   if (dir === "min" && type !== "priority") {
-    return [...arr].reverse((a, b) => a[type].localeCompare(b[type]));
+    return [...arr].reverse((a, b) => a[type].toLowerCase() - b[type].toLowerCase());
   }
   if (dir === "max" && type !== "priority") {
-    return [...arr].sort((a, b) => b[type].localeCompare(a[type]));
+    return [...arr].sort((a, b) => a[type].toLowerCase() - b[type].toLowerCase());
   }
   if (type === "priority") {
     const high = arr.filter((e) => e.priority === "High");

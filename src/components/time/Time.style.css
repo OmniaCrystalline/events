@@ -5,8 +5,8 @@
 }
 
 .t_display {
-    color: var(--accentColor);
-    display: grid;
+    color: var(--text);
+    display: flex;
     height: 56px;
     width: 100%;
     border: 1px solid var(--paleAccent);
@@ -14,8 +14,51 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
+    align-items: center;
+    padding: 16px 12px;
 }
 
 .t_accent {
     color: var(--accentColor);
+}
+
+.t_time {
+    position: absolute;
+    bottom: -160px;
+    height: 160px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 60px 60px 73px;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+    background: white;
+    padding: 0 16px;
+    gap: 1px;
+    color: var(--paleAccent);
+    gap: auto;
+}
+
+.input_time_editor {
+    display: flex;
+}
+
+.span_h_m {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    border-bottom: 1px solid var(--paleAccent);
+}
+
+.spans_container {
+    height: 160px;
+    overflow: scroll;
+    display: grid;
+}
+
+
+.span_h_m_active{
+    color: var(--text);
+    font-weight: 600;
 }

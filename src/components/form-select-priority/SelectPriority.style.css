@@ -1,0 +1,45 @@
+.priority_container {
+    width: 100%;
+    position: relative;
+}
+
+.priority_svg {
+    margin-left: auto;
+    width: fit-content;
+    display: block;
+}
+
+.select_list {
+    position: absolute;
+    top: 64px;
+    z-index: 107;
+    width: 100%;
+    padding: 0px 16px 0px 16px;
+    display: grid;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 2px 4px 9px 0px #A68DAE47;
+}
+
+.select_list_item {
+    border-bottom: 1px solid var(--paleAccent);
+    color: var(--text);
+    padding: 16px 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.select_list_item:last-child {
+    border-bottom: none;
+}
+
+.priority_input{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.priority_active{
+    color: var(--accentColor);
+}

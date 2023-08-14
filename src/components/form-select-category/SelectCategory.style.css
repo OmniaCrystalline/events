@@ -1,0 +1,32 @@
+.sel_cat_container{
+   
+    position: relative;
+}
+
+.sel_cat_label{
+    color: var(--accentColor);
+}
+
+.sel_cat_display{
+    position: relative;
+    height: 56px;
+}
+
+.sel_cat_list{
+    position: absolute;
+}
+
+.sel_cat_svg{
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+}
+
+.sel_cat_input{
+    display: flex;
+    align-items: center;
+}
+
+.sel_cat_active{
+    color: var(--accentColor);
+}

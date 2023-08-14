@@ -11,11 +11,16 @@ import { useTranslation } from "react-i18next";
 import InputDateImitator from "./InputDateImitator";
 import BackLink from "../back-link/BackLink";
 import uniqid from "uniqid";
-//import Time from "../time/Time";
+import Time from "../time/Time";
+import SelectCategory from "../form-select-category/SelectCategory";
+import SelectPriority from "../form-select-priority/SelectPriority";
 
 const CreateEvent = () => {
-  const [date, setdate] = useState('');
-  const [dateOpen, setdateOpen] = useState(false)
+  const [time, settime] = useState("");
+  const [date, setdate] = useState("");
+  const [cat, setcat] = useState("");
+  const [priority, setpriority] = useState("");
+  const [dateOpen, setdateOpen] = useState(false);
   const { t } = useTranslation();
   const navigate = useNavigate();
   const {
@@ -28,8 +33,11 @@ const CreateEvent = () => {
   console.log("errors", errors);
 
   const onSubmit = (data) => {
+    data.time = time;
     data.id = uniqid();
     data.date = date;
+    data.category = cat;
+    data.priority = priority;
     disp(addEvent(data));
     navigate(`/${data.id}`);
   };
@@ -43,6 +51,7 @@ const CreateEvent = () => {
           className={errors?.title ? "lab_title error_input" : "lab_title"}>
           {t("label_title")}
           <input
+            className='input'
             type='text'
             {...register("title", {
               required: true,
@@ -66,6 +75,7 @@ const CreateEvent = () => {
           }>
           {t("label_description")}
           <input
+            className='input'
             type='text'
             {...register("description", {
               required: true,
@@ -87,19 +97,15 @@ const CreateEvent = () => {
             setdate={setdate}
           />
           <span>{errors?.date?.message}</span>
-          </label>
-        <label
-          className={errors?.time ? "lab_time input_error" : "input_error"}>
-          {t("label_time")}
-          <input type='time' {...register("time", { required: true })} />
-          <span>{errors?.time?.message}</span>
         </label>
+        <Time settime={settime} time={time} />
         <label
           className={
             errors?.location ? "lab_location error_input" : "lab_location"
           }>
           {t("lab_location")}
           <input
+            className='input'
             type='text'
             {...register("location", {
               required: true,
@@ -112,22 +118,15 @@ const CreateEvent = () => {
           />
           <span>{errors?.location?.message}</span>
         </label>
-        <label className={errors?.category ? "lab_cat error_input" : "lab_cat"}>
+        <label>
           {t("lab_cat")}
-          <select {...register("category", { required: true })}>
-            <option value='Art'>{t("Art")}</option>
-            <option value='Music'>{t("Music")}</option>
-            <option value='Business'>{t("Business")}</option>
-            <option value='Conference'>{t("Conference")}</option>
-            <option value='Workshop'>{t("Workshop")}</option>
-            <option value='Party'>{t("Party")}</option>
-            <option value='Sport'>{t("Sport")}</option>
-          </select>
+          <SelectCategory cat={cat} setcat={setcat} />
         </label>
         <span>{errors?.category?.message}</span>
         <label className='lab_pic'>
           {t("lab_add_pic")}
           <input
+            className='input'
             type='file'
             {...register("picture", {
               //required: true,
@@ -135,19 +134,9 @@ const CreateEvent = () => {
             })}
           />
         </label>
-        <label
-          className={
-            errors?.priority ? "lab_priority error_input" : "lab_priority "
-          }>
-          <span>{t("lab_priority")}</span>
-          <select {...register("priority", { required: true })}>
-            <option value='High' className='s_list_span'>
-              {t("high")}{" "}
-            </option>
-            <option value='Medium'>{t("medium")}</option>
-            <option value='Low'>{t("low")}</option>
-          </select>
-          <span>{errors?.priority?.message}</span>
+        <label className='lab_priority'>
+          {t("lab_priority")}
+          <SelectPriority priority={priority} setpriority={setpriority} />
         </label>
         <button className='btn lab_btn' title='Add event'>
           {t("create_btn_add_event")}

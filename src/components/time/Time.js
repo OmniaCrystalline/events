@@ -4,22 +4,19 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import ShevronCalendar from "../calendar/ShevronCalendar";
 
-
 const Time = ({ settime, time }) => {
   const newDate = new Date()
-  let currentDate = time || `${newDate.getHours()}:${newDate.getMinutes()}`
-  const curMinutes = Number(currentDate.slice(-2))
-  const curHour = Number(currentDate?.slice(0, 2)); 
-  const [hour, sethour] = useState(curHour < 12 ? curHour : curHour - 12);
+  if(time === '') settime(`${display(newDate.getHours())}:${display(newDate.getMinutes())}`);
+  const curMinutes = Number(time.slice(-2));
+  const curHour = Number(time.slice(0, 2));
+  const [hour, sethour] = useState(curHour <= 12 ? curHour : curHour - 12);
   const [minutes, setminutes] = useState(curMinutes);
   const [half, sethalf] = useState(curHour <= 12 ? "AM" : "PM");
   const [open, setopen] = useState(false);
   const { t } = useTranslation();
 
   useEffect(() => {
-    settime(
-      `${display(half === "AM" ? hour : hour + 12)}:${display(minutes)}`
-    );
+    settime(`${display(half === "AM" ? hour : hour + 12)}:${display(minutes)}`);
   }, [hour, minutes, settime, half]);
 
   return (
@@ -101,6 +98,8 @@ const HalfDay = ({ half, sethalf }) => {
 };
 
 const display = (hour) => {
-  const data = hour < 10 ? "0" + hour : hour;
+  let data = null;
+  if (hour !== 0) data = hour < 10 ? "0" + hour : hour;
+  if (hour === 0) data = "12";
   return data;
 };

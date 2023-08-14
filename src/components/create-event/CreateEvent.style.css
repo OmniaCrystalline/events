@@ -85,24 +85,6 @@
     }
 }
 
-
-/*.form_event input,
-.form_event select,
-.date_input_imitator {
-    border: 1px solid #ACA7C3;
-    border-radius: 8px;
-    padding: 12px 16px;
-    color: var(--text);
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-}*/
-
-/*.form_event input,
-.form_event select {
-    height: 56px;
-}*/
-
 .input {
     height: 56px;
     border: 1px solid #ACA7C3;

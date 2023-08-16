@@ -16,7 +16,7 @@ import SelectCategory from "../form-select-category/SelectCategory";
 import SelectPriority from "../form-select-priority/SelectPriority";
 
 const CreateEvent = () => {
-  const [time, settime] = useState('');
+  const [time, settime] = useState("");
   const [date, setdate] = useState("");
   const [cat, setcat] = useState("");
   const [priority, setpriority] = useState("");

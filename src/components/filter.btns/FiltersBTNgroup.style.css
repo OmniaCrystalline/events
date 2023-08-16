@@ -1,0 +1,81 @@
+.btns_cont {
+    position: relative;
+    display: grid;
+    /*height: 56px;*/
+    justify-content: flex-end;
+    gap: 24px;
+    margin-left: auto;
+    grid-template-columns: 56px 56px 56px;
+    grid-template-areas:
+        'filter sort add'
+}
+
+.fil_wrap,
+.sort_wrap,
+.add_wrap {
+    width: 56px;
+    height: 56px;
+    position: relative;
+}
+
+.fil_wrap {
+    grid-area: filter;
+}
+
+.sort_wrap {
+    grid-area: sort;
+}
+
+.add_wrap {
+    grid-area: add;
+}
+
+.events_h {
+    display: none;
+    width: 100%;
+    grid-area: h;
+}
+
+@media screen and (min-width: 768px) {
+    .events_h {
+        display: block;
+    }
+
+    .btns_cont {
+        width: 100%;
+        margin-bottom: 40px;
+        grid-template-columns: 1fr 129px 193px;
+        grid-template-areas: 'filter sort add' 'h h h'
+    }
+
+    .fil_wrap {
+        width: 143px;
+        margin-left: auto;
+    }
+
+    .sort_wrap {
+        width: 129px;
+    }
+
+    .add_wrap {
+        width: 193px;
+    }
+
+}
+
+@media screen and (min-width: 1280px) {
+    .btns_cont {
+        /* 1 143px */
+        width: 100%;
+        grid-template-columns: 1fr 148px 129px 193px;
+        grid-template-areas: 'h filter sort add';
+        align-items: center;
+        height: 56px;
+
+    }
+
+    .events_h {
+        width: 100%;
+    }
+
+}

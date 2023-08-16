@@ -1,3 +1,7 @@
+.events_container{
+    min-height: 100vh;
+}
+
 .events_list_container {
     display: grid;
     gap: 24px;
@@ -10,6 +14,7 @@
     gap: 24px;
     margin-left: auto;
     grid-template-columns: 56px 56px 56px;
+    position: relative;
 }
 
 .card {

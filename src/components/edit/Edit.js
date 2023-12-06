@@ -22,6 +22,17 @@ const Edit = () => {
   const id = useSelector(currentEvent);
   const list = useSelector(events);
   const curData = list.find((e) => e.id === id);
+  const [day, setday] = useState(
+    Number(curData.date.slice(-2)) < 0
+      ? Number(curData.date.slice(-1))
+      : Number(curData.date.slice(-2))
+  );
+  const [month, setmonth] = useState(
+    Number(curData.date.slice(5, 7)) < 0
+      ? Number(curData.date.slice(5, 6))
+      : Number(curData.date.slice(5, 7))
+  );
+  const [year, setyear] = useState(Number(curData.date.slice(0, 4)));
   const [time, settime] = useState(curData.time);
   const [date, setdate] = useState(curData.date);
   const [cat, setcat] = useState(curData.category);
@@ -97,6 +108,12 @@ const Edit = () => {
             dateOpen={dateOpen}
             date={date}
             setdate={setdate}
+            day={day}
+            month={month}
+            year={year}
+            setyear={setyear}
+            setmonth={setmonth}
+            setday={setday}
           />
           <span>{errors?.date?.message}</span>
         </label>

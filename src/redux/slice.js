@@ -9,13 +9,26 @@ const initialState = {
   sortDirection: "min",
   currentEvent: "",
   currentPage: 1,
-  search: ''
+  search: "",
+  currentDay: "",
+  currentMonth: "",
+  currentYear: "",
 };
 
 export const taskSlice = createSlice({
   name: "tasks",
   initialState,
   reducers: {
+    setcurrentyear(state, action) {
+      state.currentYear = action.payload;
+    },
+    setcurrentmonth(state, action) {
+      state.currentMonth = action.payload;
+    },
+    setcurrentday(state, action) {
+      console.log('action.payload', action.payload)
+      state.currentDay = action.payload;
+    },
     changeLang(state, action) {
       state.lang = action.payload;
     },
@@ -43,15 +56,18 @@ export const taskSlice = createSlice({
       state.events[index] = action.payload;
     },
     setCurrantPage(state, action) {
-      state.currentPage = action.payload
+      state.currentPage = action.payload;
     },
     setSearch(state, action) {
-      state.search = action.payload
-    }
+      state.search = action.payload;
+    },
   },
 });
 
 export const {
+  setcurrentyear,
+  setcurrentday,
+  setcurrentmonth,
   setSearch,
   changeLang,
   updateEvent,

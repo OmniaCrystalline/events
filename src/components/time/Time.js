@@ -5,8 +5,6 @@ import { useTranslation } from "react-i18next";
 import ShevronCalendar from "../calendar/ShevronCalendar";
 
 const Time = ({ settime, time }) => {
-  const newDate = new Date()
-  if(time === '') settime(`${display(newDate.getHours())}:${display(newDate.getMinutes())}`);
   const curMinutes = Number(time.slice(-2));
   const curHour = Number(time.slice(0, 2));
   const [hour, sethour] = useState(curHour <= 12 ? curHour : curHour - 12);
@@ -57,7 +55,7 @@ const Hours = ({ hour, sethour }) => {
       <div
         className='span_h_m'
         onClick={() => sethour(hour === 1 ? 12 : hour - 1)}>
-        {display(hour === 1 ? 12 : hour - 1)}
+        {display(hour === 0 ? 11 : hour - 1)}
       </div>
     </div>
   );

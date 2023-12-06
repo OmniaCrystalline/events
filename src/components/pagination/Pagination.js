@@ -33,17 +33,20 @@ const Pagination = () => {
       </button>
       <button
         data-val='next'
+        disabled={curr >= lastPage}
         onClick={() => disp(setCurrantPage(curr > 1 ? curr + 1 : 1))}
         className='pag_btn'>
         {curr + 1}
       </button>
       <button
+        disabled={curr >= lastPage}
         onClick={() => disp(setCurrantPage(curr + 2))}
         data-val='step2'
         className='pag_btn pag_span_lg'>
         {curr + 2}
       </button>
       <button
+        disabled={curr >= lastPage}
         data-val='step5'
         onClick={() => disp(setCurrantPage(curr + 5))}
         className='pag_btn'>
@@ -56,6 +59,7 @@ const Pagination = () => {
         {lastPage}
       </button>
       <button
+        disabled={curr >= lastPage}
         onClick={() => disp(setCurrantPage(curr + 1))}
         data-val='next'
         className='pag_btn chevron_right'>

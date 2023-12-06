@@ -15,9 +15,29 @@ import Time from "../time/Time";
 import SelectCategory from "../form-select-category/SelectCategory";
 import SelectPriority from "../form-select-priority/SelectPriority";
 
+const display = (hour) => {
+  let data = null;
+  if (hour !== 0) data = hour < 10 ? "0" + hour : hour;
+  if (hour === 0) data = "12";
+  return data;
+};
+
 const CreateEvent = () => {
-  const [time, settime] = useState("");
-  const [date, setdate] = useState("");
+  const newDate = new Date();
+  const todayMonth = newDate.getMonth();
+  const todayYear = newDate.getFullYear();
+  const todayDate = newDate.getDate();
+  const timeNow = `${display(newDate.getHours())}:${display(
+    newDate.getMinutes()
+  )}`;
+  const dateNow = `${todayYear}-${
+    todayMonth >= 10 ? todayMonth : "0" + todayMonth.toString()
+  }-${todayDate}`;
+  const [time, settime] = useState(timeNow);
+  const [date, setdate] = useState(dateNow);
+  const [day, setday] = useState(todayDate);
+  const [month, setmonth] = useState(todayMonth);
+  const [year, setyear] = useState(todayYear);
   const [cat, setcat] = useState("");
   const [priority, setpriority] = useState("");
   const [dateOpen, setdateOpen] = useState(false);
@@ -30,7 +50,6 @@ const CreateEvent = () => {
   } = useForm();
 
   const disp = useDispatch();
-  console.log("errors", errors);
 
   const onSubmit = (data) => {
     data.time = time;
@@ -94,6 +113,12 @@ const CreateEvent = () => {
             setdateOpen={setdateOpen}
             dateOpen={dateOpen}
             date={date}
+            day={day}
+            month={month}
+            year={year}
+            setyear={setyear}
+            setmonth={setmonth}
+            setday={setday}
             setdate={setdate}
           />
           <span>{errors?.date?.message}</span>

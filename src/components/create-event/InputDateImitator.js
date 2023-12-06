@@ -5,36 +5,43 @@ import Calendar from "../calendar/Calendar";
 import ShevronCalendar from "../calendar/ShevronCalendar";
 import { dateForInput } from "./functions";
 
-const InputDateImitator = ({ setdateOpen, dateOpen, date, setdate }) => {
-  const date1 = document.querySelector("date_input_imitator");  
-  date1?.focus()
+const InputDateImitator = ({
+  setdateOpen,
+  dateOpen,
+  date,
+  day,
+  month,
+  year,
+  setyear,
+  setmonth,
+  setday,
+  setdate
+}) => {
   return (
-      <>
-        <div
-          className='date_input_imitator input'
-          onClick={() => setdateOpen(!dateOpen)}>
-          {date !== "" && dateForInput(date)}
-          <ShevronCalendar dateOpen={dateOpen} />
-        </div>
-        <input
-          type='date'
-          className='visually-hidden'
-          required={true}
-          value={date}
-          onChange={setdate}
+    <>
+      <div
+        className='date_input_imitator input'
+        onClick={(e) => {
+          setdateOpen(!dateOpen);
+        }}>
+        {dateForInput(date)}
+        <ShevronCalendar dateOpen={dateOpen} />
+      </div>
+      {dateOpen && (
+        <Calendar
+          setdateOpen={setdateOpen}
+          dateOpen={dateOpen}
+          day={day}
+          month={month}
+          year={year}
+          setyear={setyear}
+          setmonth={setmonth}
+          setday={setday}
+          setdate={setdate}
         />
-        {dateOpen && (
-          <Calendar
-            setdate={setdate}
-            setdateOpen={setdateOpen}
-            dateOpen={dateOpen}
-            date={date}
-          />
-        )}
-      </>
-    );
+      )}
+    </>
+  );
 };
 
 export default InputDateImitator;
-
-

@@ -56,12 +56,10 @@ const Events = () => {
 export default Events;
 
 const filterList = (arr, filter) => {
-  console.log('arr, filter', arr, filter)
   return arr.filter((e) => e.category === filter || filter === "All");
 };
 
 const sortedList = (arr, type, dir) => {
-  console.log('type', type)
   if (dir === "min" && type !== "priority") {
     return [...arr].reverse(
       (a, b) => a[type].toLowerCase() - b[type].toLowerCase()

@@ -9,6 +9,7 @@
     padding: 20px;
     gap: 16px;
     z-index: 201;
+    pointer-events: all
 }
 
 .c_week {
@@ -76,15 +77,15 @@
     border-radius: 4px;
 }
 
-.c_btn_close{
+.c_btn_close {
     border: 1px solid var(--accentColor);
     color: var(--accentColor);
     width: 75px;
 }
 
-.c_btn_create{
+.c_btn_create {
     background: var(--accentColor);
-    color: white; 
+    color: white;
     width: 110px;
 }
 

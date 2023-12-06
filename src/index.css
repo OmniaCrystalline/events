@@ -85,7 +85,7 @@ mb weight/size/lineheight 400/24/33
   gap: 24px;
   width: 320px;
   padding: 24px;
-  overflow-x: hidden;
+  /*overflow-x: hidden;*/
 }
 
 @media screen and (min-width: 768px) {
